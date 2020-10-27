@@ -28,3 +28,7 @@ enum NavButtons: Int {
     case add = 3
     case viewList = 4
 }
+
+enum Images {
+    static let placeholder = UIImage(named: "no-image")
+}

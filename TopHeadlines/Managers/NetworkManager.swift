@@ -15,7 +15,7 @@ class NetworkManager {
     private let apiKey = "apiKey=a3d783b72998490e8766085758580fce"
     let cache = NSCache<NSString, UIImage>()
     
-    func getArticles(completed: @escaping (Result<[Article], THError>) -> Void) {
+    func getHeadlines(completed: @escaping (Result<Headline, THError>) -> Void) {
         let endpoint = baseURL + searchModifier + apiKey
         
         guard let url = URL(string: endpoint) else {
@@ -42,8 +42,8 @@ class NetworkManager {
             
             do {
                 let decoder = JSONDecoder()
-                let articles = try decoder.decode([Article].self, from: data)
-                completed(.success(articles))
+                let headlines = try decoder.decode(Headline.self, from: data)
+                completed(.success(headlines))
             } catch {
                 completed(.failure(.invalidData))
             }

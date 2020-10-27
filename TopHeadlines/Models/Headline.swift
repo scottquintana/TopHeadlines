@@ -12,6 +12,7 @@ struct Headline: Codable, Hashable {
 }
 
 struct Article: Codable, Hashable {
+    let source: Source
     var author: String?
     let title: String
     var description: String?
