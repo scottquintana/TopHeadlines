@@ -6,7 +6,7 @@
 //
 
 import XCTest
-@testable import TopHeadlines
+//@testable import TopHeadlines
 
 class TopHeadlinesTests: XCTestCase {
 

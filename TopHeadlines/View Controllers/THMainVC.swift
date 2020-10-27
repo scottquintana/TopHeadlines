@@ -7,11 +7,34 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class THMainVC: UIViewController {
 
+    let swiperView = SwiperView()
+    let navButtonsView = NavButtonsView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        view.backgroundColor = .systemBackground
+        configureLayout()
+    }
+    
+    private func configureLayout() {
+        let stackView = UIStackView()
+        
+        view.addSubview(stackView)
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.addArrangedSubview(swiperView)
+        stackView.addArrangedSubview(navButtonsView)
+        stackView.axis = .vertical
+   
+        NSLayoutConstraint.activate([
+            stackView.topAnchor.constraint(equalTo: view.topAnchor),
+            stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            stackView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        
+        ])
+        
     }
 
 

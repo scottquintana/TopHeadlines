@@ -7,10 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5ECD1D3E254757F200700602 /* SwiperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ECD1D3D254757F200700602 /* SwiperView.swift */; };
+		5ECD1D432547583A00700602 /* NavButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ECD1D422547583A00700602 /* NavButtonsView.swift */; };
+		5ECD1D532547658200700602 /* DMSerifText-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5ECD1D4B2547625200700602 /* DMSerifText-Regular.ttf */; };
+		5ECD1D642547680D00700602 /* THNavButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ECD1D632547680D00700602 /* THNavButton.swift */; };
+		5ECD1D6D2547686B00700602 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ECD1D6C2547686B00700602 /* Constants.swift */; };
 		5EF3BF73254730F400FC6530 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF3BF72254730F400FC6530 /* AppDelegate.swift */; };
 		5EF3BF75254730F400FC6530 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF3BF74254730F400FC6530 /* SceneDelegate.swift */; };
-		5EF3BF77254730F400FC6530 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF3BF76254730F400FC6530 /* ViewController.swift */; };
-		5EF3BF7A254730F400FC6530 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5EF3BF78254730F400FC6530 /* Main.storyboard */; };
+		5EF3BF77254730F400FC6530 /* THMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF3BF76254730F400FC6530 /* THMainVC.swift */; };
 		5EF3BF7C254730F800FC6530 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5EF3BF7B254730F800FC6530 /* Assets.xcassets */; };
 		5EF3BF7F254730F800FC6530 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5EF3BF7D254730F800FC6530 /* LaunchScreen.storyboard */; };
 		5EF3BF8A254730F800FC6530 /* TopHeadlinesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF3BF89254730F800FC6530 /* TopHeadlinesTests.swift */; };
@@ -35,11 +39,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5ECD1D3D254757F200700602 /* SwiperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiperView.swift; sourceTree = "<group>"; };
+		5ECD1D422547583A00700602 /* NavButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavButtonsView.swift; sourceTree = "<group>"; };
+		5ECD1D4B2547625200700602 /* DMSerifText-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DMSerifText-Regular.ttf"; sourceTree = "<group>"; };
+		5ECD1D632547680D00700602 /* THNavButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = THNavButton.swift; sourceTree = "<group>"; };
+		5ECD1D6C2547686B00700602 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		5EF3BF6F254730F400FC6530 /* TopHeadlines.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TopHeadlines.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5EF3BF72254730F400FC6530 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5EF3BF74254730F400FC6530 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		5EF3BF76254730F400FC6530 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		5EF3BF79254730F400FC6530 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		5EF3BF76254730F400FC6530 /* THMainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = THMainVC.swift; sourceTree = "<group>"; };
 		5EF3BF7B254730F800FC6530 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5EF3BF7E254730F800FC6530 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5EF3BF80254730F800FC6530 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -76,6 +84,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5ECD1D4F2547642100700602 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				5ECD1D4B2547625200700602 /* DMSerifText-Regular.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		5ECD1D5F2547678400700602 /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				5ECD1D632547680D00700602 /* THNavButton.swift */,
+			);
+			path = Buttons;
+			sourceTree = "<group>";
+		};
+		5ECD1D6B2547684C00700602 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				5ECD1D6C2547686B00700602 /* Constants.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
 		5EF3BF66254730F400FC6530 = {
 			isa = PBXGroup;
 			children = (
@@ -99,10 +131,13 @@
 		5EF3BF71254730F400FC6530 /* TopHeadlines */ = {
 			isa = PBXGroup;
 			children = (
+				5ECD1D6B2547684C00700602 /* Utilities */,
+				5ECD1D4F2547642100700602 /* Fonts */,
+				5EF3BFB02547533200FC6530 /* Models */,
+				5EF3BFAF2547529E00FC6530 /* Custom Views */,
+				5EF3BFAE2547529200FC6530 /* View Controllers */,
 				5EF3BF72254730F400FC6530 /* AppDelegate.swift */,
 				5EF3BF74254730F400FC6530 /* SceneDelegate.swift */,
-				5EF3BF76254730F400FC6530 /* ViewController.swift */,
-				5EF3BF78254730F400FC6530 /* Main.storyboard */,
 				5EF3BF7B254730F800FC6530 /* Assets.xcassets */,
 				5EF3BF7D254730F800FC6530 /* LaunchScreen.storyboard */,
 				5EF3BF80254730F800FC6530 /* Info.plist */,
@@ -126,6 +161,31 @@
 				5EF3BF96254730F800FC6530 /* Info.plist */,
 			);
 			path = TopHeadlinesUITests;
+			sourceTree = "<group>";
+		};
+		5EF3BFAE2547529200FC6530 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				5EF3BF76254730F400FC6530 /* THMainVC.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		5EF3BFAF2547529E00FC6530 /* Custom Views */ = {
+			isa = PBXGroup;
+			children = (
+				5ECD1D5F2547678400700602 /* Buttons */,
+				5ECD1D3D254757F200700602 /* SwiperView.swift */,
+				5ECD1D422547583A00700602 /* NavButtonsView.swift */,
+			);
+			path = "Custom Views";
+			sourceTree = "<group>";
+		};
+		5EF3BFB02547533200FC6530 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -231,9 +291,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5ECD1D532547658200700602 /* DMSerifText-Regular.ttf in Resources */,
 				5EF3BF7F254730F800FC6530 /* LaunchScreen.storyboard in Resources */,
 				5EF3BF7C254730F800FC6530 /* Assets.xcassets in Resources */,
-				5EF3BF7A254730F400FC6530 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -258,9 +318,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5EF3BF77254730F400FC6530 /* ViewController.swift in Sources */,
+				5EF3BF77254730F400FC6530 /* THMainVC.swift in Sources */,
 				5EF3BF73254730F400FC6530 /* AppDelegate.swift in Sources */,
+				5ECD1D432547583A00700602 /* NavButtonsView.swift in Sources */,
+				5ECD1D3E254757F200700602 /* SwiperView.swift in Sources */,
+				5ECD1D6D2547686B00700602 /* Constants.swift in Sources */,
 				5EF3BF75254730F400FC6530 /* SceneDelegate.swift in Sources */,
+				5ECD1D642547680D00700602 /* THNavButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -296,14 +360,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		5EF3BF78254730F400FC6530 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				5EF3BF79254730F400FC6530 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		5EF3BF7D254730F800FC6530 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
