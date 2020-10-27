@@ -16,6 +16,13 @@ class THNavButton: UIButton {
 
     convenience init(color: UIColor, image: UIImage) {
         self.init(frame: .zero)
+        self.buttonImage.image = image
+        self.buttonImage.tintColor = color
+        
+        configure()
+    }
+    
+    private func configure() {
         backgroundColor = .white
         frame = CGRect(x: 0, y: 0, width: 60, height: 60)
         layer.cornerRadius =  0.5 * bounds.size.width
@@ -24,13 +31,7 @@ class THNavButton: UIButton {
         layer.shadowOffset = CGSize(width: 0, height: 1)
         layer.shadowRadius = 3
         clipsToBounds = false
-        self.buttonImage.image = image
-        self.buttonImage.tintColor = color
         
-        configure()
-    }
-    
-    private func configure() {
         addSubview(buttonImage)
         buttonImage.translatesAutoresizingMaskIntoConstraints = false
         

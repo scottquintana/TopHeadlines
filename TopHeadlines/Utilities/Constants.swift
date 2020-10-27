@@ -21,3 +21,10 @@ enum Colors {
     static let green = UIColor(red: 0.35, green: 0.66, blue: 0.42, alpha: 1.00)
     static let blue = UIColor(red: 0.17, green: 0.62, blue: 0.70, alpha: 1.00)
 }
+
+enum NavButtons: Int {
+    case undo = 1
+    case pass = 2
+    case add = 3
+    case viewList = 4
+}
