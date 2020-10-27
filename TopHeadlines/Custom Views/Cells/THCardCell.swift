@@ -17,7 +17,7 @@ class THCardCell: UICollectionViewCell {
     let timeLabel = THLabel(textAlignment: .right, fontSize: 12, fontColor: Colors.titleBlue, fontWeight: .medium)
     let titleLabel = THLabel(textAlignment: .left, fontSize: 22, fontColor: .label, fontWeight: .medium)
     let descLabel = THLabel(textAlignment: .left, fontSize: 19, fontColor: .secondaryLabel, fontWeight: .regular)
-
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
@@ -28,9 +28,13 @@ class THCardCell: UICollectionViewCell {
     }
     
     func set(article: Article) {
-        if let imageURL = article.urlToImage {
-            imageView.downloadImage(fromURL: imageURL)
+        if let imageUrl = article.urlToImage {
+            NetworkManager.shared.downloadImage(from: imageUrl) { [weak self] image in
+                guard let self = self else { return }
+                DispatchQueue.main.async { self.imageView.image = image }
+            }
         }
+        
         sourceLabel.text = article.source.name
         dateLabel.text = "Jan 01, 2020"
         timeLabel.text = "6:00pm"
@@ -77,8 +81,8 @@ class THCardCell: UICollectionViewCell {
             descLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -padding)
             
             
-        
-        
+            
+            
         ])
         
     }

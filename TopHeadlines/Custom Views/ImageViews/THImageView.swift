@@ -9,7 +9,7 @@ import UIKit
 
 class THImageView: UIImageView {
 
-    let cache = NetworkManager.shared.cache
+   // let cache = NetworkManager.shared.cache
     
     let placeholderImage = Images.placeholder
     
@@ -29,11 +29,11 @@ class THImageView: UIImageView {
         translatesAutoresizingMaskIntoConstraints = false
     }
     
-    func downloadImage(fromURL url: String) {
-        NetworkManager.shared.downloadImage(from: url) { [weak self] image in
-            guard let self = self else { return }
-            
-            DispatchQueue.main.async { self.image = image }
-        }
-    }
+//    func downloadImage(fromURL url: String) {
+//        NetworkManager.shared.downloadImage(from: url) { [weak self] image in
+//            guard let self = self else { return }
+//            
+//            DispatchQueue.main.async { self.image = image }
+//        }
+//    }
 }
