@@ -7,11 +7,11 @@
 
 import Foundation
 
-struct Headline: Codable {
+struct Headline: Codable, Hashable {
     let articles: [Article]
 }
 
-struct Article: Codable {
+struct Article: Codable, Hashable {
     var author: String?
     let title: String
     var description: String?
@@ -21,7 +21,7 @@ struct Article: Codable {
     var content: String?
 }
 
-struct Source: Codable {
+struct Source: Codable, Hashable {
     var id: String?
     let name: String
 }

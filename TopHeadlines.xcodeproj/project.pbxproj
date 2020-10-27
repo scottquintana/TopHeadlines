@@ -11,6 +11,7 @@
 		5E23BC4D2548B3FC004D14F8 /* Headline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E23BC4C2548B3FC004D14F8 /* Headline.swift */; };
 		5E23BC532548B64E004D14F8 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E23BC522548B64E004D14F8 /* NetworkManager.swift */; };
 		5E23BC582548B6CD004D14F8 /* THError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E23BC572548B6CD004D14F8 /* THError.swift */; };
+		5E23BC5D2548BE83004D14F8 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E23BC5C2548BE83004D14F8 /* PersistenceManager.swift */; };
 		5ECD1D3E254757F200700602 /* SwiperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ECD1D3D254757F200700602 /* SwiperView.swift */; };
 		5ECD1D432547583A00700602 /* NavButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ECD1D422547583A00700602 /* NavButtonsView.swift */; };
 		5ECD1D532547658200700602 /* DMSerifText-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5ECD1D4B2547625200700602 /* DMSerifText-Regular.ttf */; };
@@ -47,6 +48,7 @@
 		5E23BC4C2548B3FC004D14F8 /* Headline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Headline.swift; sourceTree = "<group>"; };
 		5E23BC522548B64E004D14F8 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		5E23BC572548B6CD004D14F8 /* THError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = THError.swift; sourceTree = "<group>"; };
+		5E23BC5C2548BE83004D14F8 /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
 		5ECD1D3D254757F200700602 /* SwiperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiperView.swift; sourceTree = "<group>"; };
 		5ECD1D422547583A00700602 /* NavButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavButtonsView.swift; sourceTree = "<group>"; };
 		5ECD1D4B2547625200700602 /* DMSerifText-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DMSerifText-Regular.ttf"; sourceTree = "<group>"; };
@@ -96,6 +98,7 @@
 			isa = PBXGroup;
 			children = (
 				5E23BC522548B64E004D14F8 /* NetworkManager.swift */,
+				5E23BC5C2548BE83004D14F8 /* PersistenceManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -349,6 +352,7 @@
 				5EF3BF77254730F400FC6530 /* THMainVC.swift in Sources */,
 				5E23BC482548843E004D14F8 /* THCardCell.swift in Sources */,
 				5E23BC532548B64E004D14F8 /* NetworkManager.swift in Sources */,
+				5E23BC5D2548BE83004D14F8 /* PersistenceManager.swift in Sources */,
 				5EF3BF73254730F400FC6530 /* AppDelegate.swift in Sources */,
 				5ECD1D432547583A00700602 /* NavButtonsView.swift in Sources */,
 				5ECD1D3E254757F200700602 /* SwiperView.swift in Sources */,
