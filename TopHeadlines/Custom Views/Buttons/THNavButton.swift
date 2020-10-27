@@ -27,7 +27,7 @@ class THNavButton: UIButton {
         frame = CGRect(x: 0, y: 0, width: 60, height: 60)
         layer.cornerRadius =  0.5 * bounds.size.width
         layer.shadowColor = UIColor.systemGray.cgColor
-        layer.shadowOpacity = 1
+        layer.shadowOpacity = 0.50
         layer.shadowOffset = CGSize(width: 0, height: 1)
         layer.shadowRadius = 3
         clipsToBounds = false

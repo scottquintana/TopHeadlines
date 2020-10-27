@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5E23BC482548843E004D14F8 /* THCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E23BC472548843E004D14F8 /* THCardCell.swift */; };
+		5E23BC4D2548B3FC004D14F8 /* Headline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E23BC4C2548B3FC004D14F8 /* Headline.swift */; };
+		5E23BC532548B64E004D14F8 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E23BC522548B64E004D14F8 /* NetworkManager.swift */; };
+		5E23BC582548B6CD004D14F8 /* THError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E23BC572548B6CD004D14F8 /* THError.swift */; };
 		5ECD1D3E254757F200700602 /* SwiperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ECD1D3D254757F200700602 /* SwiperView.swift */; };
 		5ECD1D432547583A00700602 /* NavButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ECD1D422547583A00700602 /* NavButtonsView.swift */; };
 		5ECD1D532547658200700602 /* DMSerifText-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5ECD1D4B2547625200700602 /* DMSerifText-Regular.ttf */; };
@@ -39,6 +43,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5E23BC472548843E004D14F8 /* THCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = THCardCell.swift; sourceTree = "<group>"; };
+		5E23BC4C2548B3FC004D14F8 /* Headline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Headline.swift; sourceTree = "<group>"; };
+		5E23BC522548B64E004D14F8 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		5E23BC572548B6CD004D14F8 /* THError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = THError.swift; sourceTree = "<group>"; };
 		5ECD1D3D254757F200700602 /* SwiperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiperView.swift; sourceTree = "<group>"; };
 		5ECD1D422547583A00700602 /* NavButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavButtonsView.swift; sourceTree = "<group>"; };
 		5ECD1D4B2547625200700602 /* DMSerifText-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DMSerifText-Regular.ttf"; sourceTree = "<group>"; };
@@ -84,6 +92,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5E23BC512548B63B004D14F8 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				5E23BC522548B64E004D14F8 /* NetworkManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		5EA3844D254873E600448BFC /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				5E23BC472548843E004D14F8 /* THCardCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		5ECD1D4F2547642100700602 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -104,6 +128,7 @@
 			isa = PBXGroup;
 			children = (
 				5ECD1D6C2547686B00700602 /* Constants.swift */,
+				5E23BC572548B6CD004D14F8 /* THError.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -131,6 +156,7 @@
 		5EF3BF71254730F400FC6530 /* TopHeadlines */ = {
 			isa = PBXGroup;
 			children = (
+				5E23BC512548B63B004D14F8 /* Managers */,
 				5ECD1D6B2547684C00700602 /* Utilities */,
 				5ECD1D4F2547642100700602 /* Fonts */,
 				5EF3BFB02547533200FC6530 /* Models */,
@@ -174,6 +200,7 @@
 		5EF3BFAF2547529E00FC6530 /* Custom Views */ = {
 			isa = PBXGroup;
 			children = (
+				5EA3844D254873E600448BFC /* Cells */,
 				5ECD1D5F2547678400700602 /* Buttons */,
 				5ECD1D3D254757F200700602 /* SwiperView.swift */,
 				5ECD1D422547583A00700602 /* NavButtonsView.swift */,
@@ -184,6 +211,7 @@
 		5EF3BFB02547533200FC6530 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				5E23BC4C2548B3FC004D14F8 /* Headline.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -319,12 +347,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				5EF3BF77254730F400FC6530 /* THMainVC.swift in Sources */,
+				5E23BC482548843E004D14F8 /* THCardCell.swift in Sources */,
+				5E23BC532548B64E004D14F8 /* NetworkManager.swift in Sources */,
 				5EF3BF73254730F400FC6530 /* AppDelegate.swift in Sources */,
 				5ECD1D432547583A00700602 /* NavButtonsView.swift in Sources */,
 				5ECD1D3E254757F200700602 /* SwiperView.swift in Sources */,
+				5E23BC4D2548B3FC004D14F8 /* Headline.swift in Sources */,
 				5ECD1D6D2547686B00700602 /* Constants.swift in Sources */,
 				5EF3BF75254730F400FC6530 /* SceneDelegate.swift in Sources */,
 				5ECD1D642547680D00700602 /* THNavButton.swift in Sources */,
+				5E23BC582548B6CD004D14F8 /* THError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
