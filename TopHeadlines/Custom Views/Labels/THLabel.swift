@@ -22,6 +22,7 @@ class THLabel: UILabel {
         self.init(frame: .zero)
         font = UIFont.systemFont(ofSize: fontSize, weight: fontWeight)
         textColor = fontColor
+        self.textAlignment = textAlignment
         
     }
     

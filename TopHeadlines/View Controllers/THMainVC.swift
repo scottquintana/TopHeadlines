@@ -16,7 +16,7 @@ class THMainVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
-        
+        edgesForExtendedLayout = []
         navButtonsView.delegate = self
         configureLayout()
         

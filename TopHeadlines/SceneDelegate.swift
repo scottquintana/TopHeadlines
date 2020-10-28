@@ -26,14 +26,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func createNavigationController() -> UINavigationController {
         let thMainVC = THMainVC()
         thMainVC.title = "Top Headlines"
-        thMainVC.navigationController?.navigationBar.backgroundColor = .systemRed
-        
         return UINavigationController(rootViewController: thMainVC)
     }
     
     func configureNavigationBar() {
         UINavigationBar.appearance().barTintColor = Colors.titleBlue
-        
+
         let attributes = [
                 NSAttributedString.Key.font: UIFont(name: "DMSerifText-Regular", size: 22)!,
                 NSAttributedString.Key.foregroundColor: UIColor.white

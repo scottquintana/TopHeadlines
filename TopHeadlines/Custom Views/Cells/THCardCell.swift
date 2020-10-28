@@ -10,7 +10,7 @@ import UIKit
 class THCardCell: UICollectionViewCell {
     
     static let reuseID = "THCardCell"
-    
+    let shadowView = UIView()
     let cardView = UIView()
     let imageView = THImageView(frame: .zero)
     let sourceLabel = THLabel(textAlignment: .left, fontSize: 26, fontColor: .label, fontWeight: .bold)
@@ -32,7 +32,12 @@ class THCardCell: UICollectionViewCell {
         if let imageUrl = article.urlToImage {
             NetworkManager.shared.downloadImage(from: imageUrl) { [weak self] image in
                 guard let self = self else { return }
-                DispatchQueue.main.async { self.imageView.image = image }
+                DispatchQueue.main.async {
+                    self.imageView.image = image
+                    self.imageView.sizeToFit()
+                    self.setNeedsLayout()
+                    self.layoutIfNeeded()
+                }
             }
         }
         
@@ -44,35 +49,37 @@ class THCardCell: UICollectionViewCell {
     }
     
     private func configure() {
+        
         contentView.addSubview(cardView)
+        cardView.clipsToBounds = false
         cardView.layer.cornerRadius = 20
         cardView.backgroundColor = .systemBackground
         cardView.layer.shadowColor = UIColor.systemGray.cgColor
-        cardView.layer.shadowOpacity = 0.5
+        cardView.layer.shadowOpacity = 1
         cardView.layer.shadowRadius = 10
         cardView.layer.shadowOffset = CGSize(width: -1, height: 2)
         cardView.translatesAutoresizingMaskIntoConstraints = false
         
         cardView.addSubviews(imageView, sourceLabel, dateLabel, timeLabel, titleLabel, descLabel)
-        
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleAspectFill
         titleLabel.numberOfLines = 4
         titleLabel.adjustsFontSizeToFitWidth = true
         descLabel.numberOfLines = 5
         descLabel.adjustsFontSizeToFitWidth = true
         descLabel.minimumScaleFactor = 0.9
         
-        let padding: CGFloat = 4
+        let padding: CGFloat = 8
         NSLayoutConstraint.activate([
             
-            cardView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            cardView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            cardView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            cardView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            cardView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20),
+            cardView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+            cardView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+            cardView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20),
             
             imageView.topAnchor.constraint(equalTo: cardView.topAnchor),
             imageView.leadingAnchor.constraint(equalTo: cardView.leadingAnchor),
             imageView.trailingAnchor.constraint(equalTo: cardView.trailingAnchor),
+            imageView.heightAnchor.constraint(equalTo: cardView.heightAnchor, multiplier: 0.45),
             
             sourceLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: padding),
             sourceLabel.leadingAnchor.constraint(equalTo: cardView.leadingAnchor, constant: padding),
@@ -85,7 +92,7 @@ class THCardCell: UICollectionViewCell {
             dateLabel.heightAnchor.constraint(equalToConstant: 14),
             
             timeLabel.topAnchor.constraint(equalTo: sourceLabel.bottomAnchor, constant: padding),
-            timeLabel.leadingAnchor.constraint(equalTo: dateLabel.leadingAnchor),
+            timeLabel.widthAnchor.constraint(equalToConstant: 100),
             timeLabel.trailingAnchor.constraint(equalTo: cardView.trailingAnchor, constant: -padding),
             timeLabel.heightAnchor.constraint(equalToConstant: 14),
             

@@ -127,6 +127,14 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		5E23BC7F254A073E004D14F8 /* Labels */ = {
+			isa = PBXGroup;
+			children = (
+				5E23BC672548D36F004D14F8 /* THLabel.swift */,
+			);
+			path = Labels;
+			sourceTree = "<group>";
+		};
 		5EA3844D254873E600448BFC /* Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -229,12 +237,12 @@
 		5EF3BFAF2547529E00FC6530 /* Custom Views */ = {
 			isa = PBXGroup;
 			children = (
+				5E23BC7F254A073E004D14F8 /* Labels */,
 				5ECD1D5F2547678400700602 /* Buttons */,
 				5EA3844D254873E600448BFC /* Cells */,
 				5E23BC612548CA2A004D14F8 /* ImageViews */,
 				5ECD1D422547583A00700602 /* NavButtonsView.swift */,
 				5ECD1D3D254757F200700602 /* SwiperView.swift */,
-				5E23BC672548D36F004D14F8 /* THLabel.swift */,
 			);
 			path = "Custom Views";
 			sourceTree = "<group>";
