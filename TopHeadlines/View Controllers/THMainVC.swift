@@ -18,6 +18,7 @@ class THMainVC: UIViewController {
         view.backgroundColor = .systemBackground
         edgesForExtendedLayout = []
         navButtonsView.delegate = self
+        swiperView.delegate = self
         configureLayout()
         
         getHeadlines()
@@ -67,11 +68,24 @@ extension THMainVC: NavButtonsViewDelegate {
         case .undo:
             print("undo button tapped")
         case .pass:
-            print("pass button tapped")
+            swiperView.buttonPressedToSwipe(buttonPressed: .pass)
         case .add:
-            print("add button tapped")
+            swiperView.buttonPressedToSwipe(buttonPressed: .add)
         case .viewList:
             print("view button tapped")
         }
     }
+}
+
+extension THMainVC: SwiperViewDelegate {
+    func didSwipeOnArticle(article: Article, swipeDecision: SwipeDecision) {
+        switch swipeDecision {
+        case .pass:
+            print("pass on article: \(article.title)")
+        case .add:
+            print("added on article: \(article.title)")
+        }
+    }
+    
+    
 }

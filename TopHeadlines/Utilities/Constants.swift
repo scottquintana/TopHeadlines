@@ -32,3 +32,7 @@ enum NavButtons: Int {
 enum Images {
     static let placeholder = UIImage(named: "no-image")
 }
+
+enum SwipeDecision {
+    case add, pass
+}

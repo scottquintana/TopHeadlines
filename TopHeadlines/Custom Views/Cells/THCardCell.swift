@@ -10,6 +10,7 @@ import UIKit
 class THCardCell: UICollectionViewCell {
     
     static let reuseID = "THCardCell"
+    
     let shadowView = UIView()
     let cardView = UIView()
     let imageView = THImageView(frame: .zero)
@@ -42,25 +43,30 @@ class THCardCell: UICollectionViewCell {
         }
         
         sourceLabel.text = article.source.name
-        dateLabel.text = "Jan 01, 2020"
-        timeLabel.text = "6:00pm"
+        dateLabel.text = DateHelper.convertToMonthDayYearFormat(article.publishedAt)
+        timeLabel.text = DateHelper.convertToTimeFormat(article.publishedAt)
         titleLabel.text = article.title
         descLabel.text = article.description ?? "No description"
     }
     
     private func configure() {
         
-        contentView.addSubview(cardView)
-        cardView.clipsToBounds = false
+        contentView.addSubview(shadowView)
+        shadowView.addSubview(cardView)
+
+        shadowView.layer.shadowColor = UIColor.systemGray.cgColor
+        shadowView.layer.shadowOpacity = 0.5
+        shadowView.layer.shadowRadius = 8
+        shadowView.layer.cornerRadius = 20
+        shadowView.layer.shadowOffset = CGSize(width: 0, height: 1)
+        shadowView.translatesAutoresizingMaskIntoConstraints = false
+        
+        cardView.clipsToBounds = true
         cardView.layer.cornerRadius = 20
         cardView.backgroundColor = .systemBackground
-        cardView.layer.shadowColor = UIColor.systemGray.cgColor
-        cardView.layer.shadowOpacity = 1
-        cardView.layer.shadowRadius = 10
-        cardView.layer.shadowOffset = CGSize(width: -1, height: 2)
         cardView.translatesAutoresizingMaskIntoConstraints = false
-        
         cardView.addSubviews(imageView, sourceLabel, dateLabel, timeLabel, titleLabel, descLabel)
+        
         imageView.contentMode = .scaleAspectFill
         titleLabel.numberOfLines = 4
         titleLabel.adjustsFontSizeToFitWidth = true
@@ -70,6 +76,11 @@ class THCardCell: UICollectionViewCell {
         
         let padding: CGFloat = 8
         NSLayoutConstraint.activate([
+            
+            shadowView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20),
+            shadowView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+            shadowView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+            shadowView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20),
             
             cardView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20),
             cardView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),

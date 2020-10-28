@@ -8,7 +8,7 @@
 import UIKit
 
 protocol ArticleStackLayoutDelegate: class {
-    func articleShouldRemove(_ flowLayout: ArticleStackLayout, indexPath: IndexPath)
+    func articleShouldRemove(_ flowLayout: ArticleStackLayout, swipeDecision: SwipeDecision, indexPath: IndexPath)
 }
 
 class ArticleStackLayout: UICollectionViewLayout {
@@ -19,7 +19,7 @@ class ArticleStackLayout: UICollectionViewLayout {
     private var panGestureRecognizer: UIPanGestureRecognizer = UIPanGestureRecognizer()
     private let maxOffsetThresholdPercentage: CGFloat = 0.3
     
-    private var topCellWithIndexPath: CellWithIndexPath? {
+    var topCellWithIndexPath: CellWithIndexPath? {
         let lastItem = collectionView?.numberOfItems(inSection: 0) ?? 0
         let indexPath = IndexPath(item: lastItem - 1, section: 0)
         guard let cell = collectionView?.cellForItem(at: indexPath) else { return nil }
@@ -27,7 +27,7 @@ class ArticleStackLayout: UICollectionViewLayout {
     }
     
     
-    private var bottomCellWithIndexPath: CellWithIndexPath? {
+    var bottomCellWithIndexPath: CellWithIndexPath? {
         guard let numItems = collectionView?.numberOfItems(inSection: 0), numItems > 1 else { return nil }
         let indexPath = IndexPath(item: numItems - 2, section: 0)
         guard let cell = collectionView?.cellForItem(at: indexPath) else { return nil }
@@ -105,8 +105,9 @@ class ArticleStackLayout: UICollectionViewLayout {
             if abs(xOffset) > xMaxOffset {
                 if let topCard = topCellWithIndexPath {
                     animateAndRemove(left: xOffset < 0, cell: topCard.cell, completion: { [weak self] in
-                        guard let `self` = self else { return }
-                        self.delegate?.articleShouldRemove(self, indexPath: topCard.indexPath)
+                        guard let self = self else { return }
+                        
+                        self.delegate?.articleShouldRemove(self, swipeDecision: xOffset < 0 ? .pass : .add, indexPath: topCard.indexPath)
                     })
                 }
                 
@@ -124,7 +125,7 @@ class ArticleStackLayout: UICollectionViewLayout {
         }
     }
     
-    private func animateIntoPosition(cell: UICollectionViewCell) {
+    func animateIntoPosition(cell: UICollectionViewCell) {
         
         UIView.animate(withDuration: animationDuration) {
             cell.transform = CGAffineTransform.identity
@@ -132,7 +133,7 @@ class ArticleStackLayout: UICollectionViewLayout {
         }
     }
     
-    private func animateAndRemove(left: Bool, cell: UICollectionViewCell, completion:(()->())?) {
+    func animateAndRemove(left: Bool, cell: UICollectionViewCell, completion:(()->())?) {
         
         let screenWidth = UIScreen.main.bounds.width
         UIView.animate(withDuration: animationDuration, animations: {

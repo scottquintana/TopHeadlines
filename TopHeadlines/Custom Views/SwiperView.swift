@@ -7,14 +7,21 @@
 
 import UIKit
 
-class SwiperView: UIView {
+protocol SwiperViewDelegate: class {
+    func didSwipeOnArticle(article: Article, swipeDecision: SwipeDecision)
+}
 
+class SwiperView: UIView {
+    
     var articleCollectionView: UICollectionView!
+    let customLayout = ArticleStackLayout()
     var articles: [Article] = []
+    
+    weak var delegate: SwiperViewDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = .systemPink
+        backgroundColor = .systemBackground
         
         configureCollectionView()
     }
@@ -22,7 +29,7 @@ class SwiperView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
     
     func set(articles: [Article]) {
         self.articles = articles
@@ -30,17 +37,15 @@ class SwiperView: UIView {
         DispatchQueue.main.async {
             self.articleCollectionView.reloadData()
         }
-
+        
     }
     
     private func configureCollectionView() {
-        
-        let customLayout = ArticleStackLayout()
         articleCollectionView = UICollectionView(frame: .zero, collectionViewLayout: customLayout)
         addSubview(articleCollectionView)
         articleCollectionView.delegate = self
         articleCollectionView.dataSource = self
-        articleCollectionView.backgroundColor = .systemBlue
+        articleCollectionView.backgroundColor = .systemBackground
         articleCollectionView.register(THCardCell.self, forCellWithReuseIdentifier: THCardCell.reuseID)
         articleCollectionView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -53,6 +58,20 @@ class SwiperView: UIView {
             articleCollectionView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
         ])
     }
+    
+    func buttonPressedToSwipe(buttonPressed: SwipeDecision) {
+        if let topCard = customLayout.topCellWithIndexPath {
+            customLayout.animateAndRemove(left: buttonPressed == .pass, cell: topCard.cell, completion: { [weak self] in
+                guard let self = self else { return }
+                
+                self.customLayout.delegate?.articleShouldRemove(self.customLayout, swipeDecision: buttonPressed, indexPath: topCard.indexPath)
+            })
+        }
+        
+        if let bottomCard = customLayout.bottomCellWithIndexPath {
+            customLayout.animateIntoPosition(cell: bottomCard.cell)
+        }
+    }
 }
 
 extension SwiperView: UICollectionViewDataSource {
@@ -63,7 +82,7 @@ extension SwiperView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: THCardCell.reuseID, for: indexPath) as? THCardCell else {
             return UICollectionViewCell()
-            }
+        }
         
         cell.set(article: articles[indexPath.row])
         
@@ -73,10 +92,14 @@ extension SwiperView: UICollectionViewDataSource {
 
 extension SwiperView: UICollectionViewDelegate { }
 
+
 extension SwiperView: ArticleStackLayoutDelegate {
-    func articleShouldRemove(_ flowLayout: ArticleStackLayout, indexPath: IndexPath) {
-        print("swiped!")
+    func articleShouldRemove(_ flowLayout: ArticleStackLayout, swipeDecision: SwipeDecision, indexPath: IndexPath) {
+        let swipedArticle = articles[indexPath.row]
+        
+        delegate?.didSwipeOnArticle(article: swipedArticle, swipeDecision: swipeDecision)
+        articles.removeLast()
+        articleCollectionView.reloadData()
     }
-    
     
 }

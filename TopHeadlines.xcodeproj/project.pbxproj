@@ -21,6 +21,7 @@
 		5ECD1D532547658200700602 /* DMSerifText-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5ECD1D4B2547625200700602 /* DMSerifText-Regular.ttf */; };
 		5ECD1D642547680D00700602 /* THNavButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ECD1D632547680D00700602 /* THNavButton.swift */; };
 		5ECD1D6D2547686B00700602 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ECD1D6C2547686B00700602 /* Constants.swift */; };
+		5EDE8006254A0FF8002F1D2A /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EDE8005254A0FF8002F1D2A /* DateHelper.swift */; };
 		5EF3BF73254730F400FC6530 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF3BF72254730F400FC6530 /* AppDelegate.swift */; };
 		5EF3BF75254730F400FC6530 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF3BF74254730F400FC6530 /* SceneDelegate.swift */; };
 		5EF3BF77254730F400FC6530 /* THMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF3BF76254730F400FC6530 /* THMainVC.swift */; };
@@ -62,6 +63,7 @@
 		5ECD1D4B2547625200700602 /* DMSerifText-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DMSerifText-Regular.ttf"; sourceTree = "<group>"; };
 		5ECD1D632547680D00700602 /* THNavButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = THNavButton.swift; sourceTree = "<group>"; };
 		5ECD1D6C2547686B00700602 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		5EDE8005254A0FF8002F1D2A /* DateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
 		5EF3BF6F254730F400FC6530 /* TopHeadlines.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TopHeadlines.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5EF3BF72254730F400FC6530 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5EF3BF74254730F400FC6530 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -165,6 +167,7 @@
 			children = (
 				5ECD1D6C2547686B00700602 /* Constants.swift */,
 				5E23BC572548B6CD004D14F8 /* THError.swift */,
+				5EDE8005254A0FF8002F1D2A /* DateHelper.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -394,6 +397,7 @@
 				5E23BC5D2548BE83004D14F8 /* PersistenceManager.swift in Sources */,
 				5EF3BF73254730F400FC6530 /* AppDelegate.swift in Sources */,
 				5ECD1D432547583A00700602 /* NavButtonsView.swift in Sources */,
+				5EDE8006254A0FF8002F1D2A /* DateHelper.swift in Sources */,
 				5ECD1D3E254757F200700602 /* SwiperView.swift in Sources */,
 				5E23BC4D2548B3FC004D14F8 /* Headline.swift in Sources */,
 				5E23BC792549347C004D14F8 /* ArticleStackLayout.swift in Sources */,
