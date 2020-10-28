@@ -15,6 +15,7 @@
 		5E23BC632548CA50004D14F8 /* THImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E23BC622548CA50004D14F8 /* THImageView.swift */; };
 		5E23BC682548D36F004D14F8 /* THLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E23BC672548D36F004D14F8 /* THLabel.swift */; };
 		5E23BC6E2548D7F0004D14F8 /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E23BC6D2548D7F0004D14F8 /* UIView+Ext.swift */; };
+		5E23BC792549347C004D14F8 /* ArticleStackLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E23BC782549347C004D14F8 /* ArticleStackLayout.swift */; };
 		5ECD1D3E254757F200700602 /* SwiperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ECD1D3D254757F200700602 /* SwiperView.swift */; };
 		5ECD1D432547583A00700602 /* NavButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ECD1D422547583A00700602 /* NavButtonsView.swift */; };
 		5ECD1D532547658200700602 /* DMSerifText-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5ECD1D4B2547625200700602 /* DMSerifText-Regular.ttf */; };
@@ -55,6 +56,7 @@
 		5E23BC622548CA50004D14F8 /* THImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = THImageView.swift; sourceTree = "<group>"; };
 		5E23BC672548D36F004D14F8 /* THLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = THLabel.swift; sourceTree = "<group>"; };
 		5E23BC6D2548D7F0004D14F8 /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
+		5E23BC782549347C004D14F8 /* ArticleStackLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleStackLayout.swift; sourceTree = "<group>"; };
 		5ECD1D3D254757F200700602 /* SwiperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiperView.swift; sourceTree = "<group>"; };
 		5ECD1D422547583A00700602 /* NavButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavButtonsView.swift; sourceTree = "<group>"; };
 		5ECD1D4B2547625200700602 /* DMSerifText-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DMSerifText-Regular.ttf"; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				5E23BC472548843E004D14F8 /* THCardCell.swift */,
+				5E23BC782549347C004D14F8 /* ArticleStackLayout.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -385,6 +388,7 @@
 				5ECD1D432547583A00700602 /* NavButtonsView.swift in Sources */,
 				5ECD1D3E254757F200700602 /* SwiperView.swift in Sources */,
 				5E23BC4D2548B3FC004D14F8 /* Headline.swift in Sources */,
+				5E23BC792549347C004D14F8 /* ArticleStackLayout.swift in Sources */,
 				5ECD1D6D2547686B00700602 /* Constants.swift in Sources */,
 				5EF3BF75254730F400FC6530 /* SceneDelegate.swift in Sources */,
 				5ECD1D642547680D00700602 /* THNavButton.swift in Sources */,

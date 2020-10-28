@@ -11,6 +11,7 @@ class THCardCell: UICollectionViewCell {
     
     static let reuseID = "THCardCell"
     
+    let cardView = UIView()
     let imageView = THImageView(frame: .zero)
     let sourceLabel = THLabel(textAlignment: .left, fontSize: 26, fontColor: .label, fontWeight: .bold)
     let dateLabel = THLabel(textAlignment: .left, fontSize: 12, fontColor: Colors.titleBlue, fontWeight: .medium)
@@ -43,49 +44,64 @@ class THCardCell: UICollectionViewCell {
     }
     
     private func configure() {
-        addSubviews(imageView, sourceLabel, dateLabel, timeLabel, titleLabel, descLabel)
+        contentView.addSubview(cardView)
+        cardView.layer.cornerRadius = 20
+        cardView.backgroundColor = .systemBackground
+        cardView.layer.shadowColor = UIColor.systemGray.cgColor
+        cardView.layer.shadowOpacity = 0.5
+        cardView.layer.shadowRadius = 10
+        cardView.layer.shadowOffset = CGSize(width: -1, height: 2)
+        cardView.translatesAutoresizingMaskIntoConstraints = false
+        
+        cardView.addSubviews(imageView, sourceLabel, dateLabel, timeLabel, titleLabel, descLabel)
         
         imageView.contentMode = .scaleAspectFit
+        titleLabel.numberOfLines = 4
+        titleLabel.adjustsFontSizeToFitWidth = true
+        descLabel.numberOfLines = 5
+        descLabel.adjustsFontSizeToFitWidth = true
+        descLabel.minimumScaleFactor = 0.9
         
         let padding: CGFloat = 4
         NSLayoutConstraint.activate([
-            imageView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            imageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            
+            cardView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            cardView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            cardView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            cardView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            
+            imageView.topAnchor.constraint(equalTo: cardView.topAnchor),
+            imageView.leadingAnchor.constraint(equalTo: cardView.leadingAnchor),
+            imageView.trailingAnchor.constraint(equalTo: cardView.trailingAnchor),
             
             sourceLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: padding),
-            sourceLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: padding),
-            sourceLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -padding),
+            sourceLabel.leadingAnchor.constraint(equalTo: cardView.leadingAnchor, constant: padding),
+            sourceLabel.trailingAnchor.constraint(equalTo: cardView.trailingAnchor, constant: -padding),
             sourceLabel.heightAnchor.constraint(equalToConstant: 24),
             
             dateLabel.topAnchor.constraint(equalTo: sourceLabel.bottomAnchor, constant: padding),
-            dateLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: padding),
+            dateLabel.leadingAnchor.constraint(equalTo: cardView.leadingAnchor, constant: padding),
             dateLabel.trailingAnchor.constraint(equalTo: timeLabel.leadingAnchor),
             dateLabel.heightAnchor.constraint(equalToConstant: 14),
             
             timeLabel.topAnchor.constraint(equalTo: sourceLabel.bottomAnchor, constant: padding),
             timeLabel.leadingAnchor.constraint(equalTo: dateLabel.leadingAnchor),
-            timeLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -padding),
+            timeLabel.trailingAnchor.constraint(equalTo: cardView.trailingAnchor, constant: -padding),
             timeLabel.heightAnchor.constraint(equalToConstant: 14),
             
             //insert line break here
             
             titleLabel.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: padding),
-            titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: padding),
-            titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -padding),
+            titleLabel.leadingAnchor.constraint(equalTo: cardView.leadingAnchor, constant: padding),
+            titleLabel.trailingAnchor.constraint(equalTo: cardView.trailingAnchor, constant: -padding),
             titleLabel.bottomAnchor.constraint(equalTo: descLabel.topAnchor, constant: -(padding/2)),
             
             descLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: padding/2),
-            descLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: padding),
-            descLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -padding),
-            descLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -padding)
-            
-            
-            
+            descLabel.leadingAnchor.constraint(equalTo: cardView.leadingAnchor, constant: padding),
+            descLabel.trailingAnchor.constraint(equalTo: cardView.trailingAnchor, constant: -padding),
+            descLabel.bottomAnchor.constraint(equalTo: cardView.bottomAnchor, constant: -padding)
             
         ])
-        
     }
-    
 }
 

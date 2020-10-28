@@ -13,5 +13,6 @@ enum THError: String, Error {
     case invalidData = "The data received from the server was invalid. Please try again."
     case unableToAdd = "There was an error adding this article. Please try again."
     case alreadyOnList = "You've already added this article."
+    case invalidJSON = "JSON parsing error"
 }
 

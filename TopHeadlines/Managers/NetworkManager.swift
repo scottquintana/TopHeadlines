@@ -42,10 +42,13 @@ class NetworkManager {
             
             do {
                 let decoder = JSONDecoder()
+                decoder.keyDecodingStrategy = .useDefaultKeys
+                decoder.dateDecodingStrategy = .iso8601
                 let headlines = try decoder.decode(Headline.self, from: data)
+               
                 completed(.success(headlines))
             } catch {
-                completed(.failure(.invalidData))
+                completed(.failure(.invalidJSON))
             }
         }
         task.resume()

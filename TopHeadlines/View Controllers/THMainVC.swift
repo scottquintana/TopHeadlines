@@ -11,7 +11,8 @@ class THMainVC: UIViewController {
 
     let swiperView = SwiperView()
     let navButtonsView = NavButtonsView()
-    
+    var headlines: Headline?
+    var articles: [Article] = []
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
@@ -19,7 +20,7 @@ class THMainVC: UIViewController {
         navButtonsView.delegate = self
         configureLayout()
         
-        
+        getHeadlines()
     }
     
     
@@ -38,6 +39,23 @@ class THMainVC: UIViewController {
             stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             stackView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
+    }
+    
+    func getHeadlines() {
+        NetworkManager.shared.getHeadlines { [weak self] result in
+            guard let self = self else { return }
+            
+            switch result {
+            case .success(let downloadedHeadlines):
+                self.articles = downloadedHeadlines.articles
+                self.swiperView.set(articles: self.articles)
+                case .failure(let error):
+                    print("There was an error: \(error.rawValue)")
+            }
+        }
+          
+        
+        
     }
 }
 

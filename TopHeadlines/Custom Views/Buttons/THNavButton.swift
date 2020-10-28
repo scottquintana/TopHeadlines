@@ -23,7 +23,7 @@ class THNavButton: UIButton {
     }
     
     private func configure() {
-        backgroundColor = .white
+        backgroundColor = .systemBackground
         frame = CGRect(x: 0, y: 0, width: 60, height: 60)
         layer.cornerRadius =  0.5 * bounds.size.width
         layer.shadowColor = UIColor.systemGray.cgColor
