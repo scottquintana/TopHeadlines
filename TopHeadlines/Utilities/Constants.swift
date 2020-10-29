@@ -33,6 +33,7 @@ enum Images {
     static let placeholder = UIImage(named: "no-image")
 }
 
-enum SwipeDecision {
-    case add, pass
+enum SwipeDecision: String {
+    case add = "readingList"
+    case pass = "passList"
 }

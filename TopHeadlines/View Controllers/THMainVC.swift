@@ -8,11 +8,14 @@
 import UIKit
 
 class THMainVC: UIViewController {
-
+    
     let swiperView = SwiperView()
     let navButtonsView = NavButtonsView()
     var headlines: Headline?
     var articles: [Article] = []
+    var passList: [Article] = []
+    var readingList: [Article] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
@@ -20,7 +23,8 @@ class THMainVC: UIViewController {
         navButtonsView.delegate = self
         swiperView.delegate = self
         configureLayout()
-        
+        loadLists(listType: .add)
+        loadLists(listType: .pass)
         getHeadlines()
     }
     
@@ -33,7 +37,7 @@ class THMainVC: UIViewController {
         stackView.addArrangedSubview(swiperView)
         stackView.addArrangedSubview(navButtonsView)
         stackView.axis = .vertical
-   
+        
         NSLayoutConstraint.activate([
             stackView.topAnchor.constraint(equalTo: view.topAnchor),
             stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -48,16 +52,59 @@ class THMainVC: UIViewController {
             
             switch result {
             case .success(let downloadedHeadlines):
+                self.filterArticles(incomingArticles: downloadedHeadlines.articles)
                 self.articles = downloadedHeadlines.articles
                 self.swiperView.set(articles: self.articles)
-                case .failure(let error):
-                    print("There was an error: \(error.rawValue)")
+            case .failure(let error):
+                print("There was an error: \(error.rawValue)")
             }
         }
     }
     
+    
+    private func loadLists(listType: SwipeDecision) {
+        PersistenceManager.retrieveArticles(from: listType.rawValue) { [weak self] result in
+            guard let self = self else { return }
+            
+            switch result {
+            case .success(let articles):
+                if listType == .pass {
+                    self.passList = articles
+                } else {
+                    self.readingList = articles
+                }
+            case.failure(let error):
+                print("There was an error: \(error)")
+            }
+        }
+    }
+    
+    
+    private func filterArticles(incomingArticles: [Article]) -> [Article] {
+        let combinedList = passList + readingList
+        var articles = incomingArticles
+        for article in articles {
+            var a = article.hasBeenRead
+            if combinedList.contains(article) {
+                print("it's in there: \(article.title)")
+            }
+        }
+        return incomingArticles
+    }
+    
+    func addToList(article: Article, listType: SwipeDecision) {
+        var unreadArticle = article
+       // unreadArticle.hasBeenRead = false
+        PersistenceManager.updateWith(article: unreadArticle, from: listType.rawValue, actionType: .add) { error in
+            guard let error = error else { return }
+            print("There was an error: \(error)")
+            return
+            
+        }
+    }
+    
     func pushReadingList() {
-        let readingListVC = ReadingListVC(readingList: articles)
+        let readingListVC = ReadingListVC()
         navigationController?.pushViewController(readingListVC, animated: true)
     }
 }
@@ -81,13 +128,7 @@ extension THMainVC: NavButtonsViewDelegate {
 
 extension THMainVC: SwiperViewDelegate {
     func didSwipeOnArticle(article: Article, swipeDecision: SwipeDecision) {
-        switch swipeDecision {
-        case .pass:
-            print("pass on article: \(article.title)")
-        case .add:
-            print("added on article: \(article.title)")
-        }
+        addToList(article: article, listType: swipeDecision)
+        
     }
-    
-    
 }

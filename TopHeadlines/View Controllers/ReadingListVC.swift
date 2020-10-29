@@ -6,27 +6,27 @@
 //
 
 import UIKit
+import SafariServices
 
 class ReadingListVC: UIViewController {
 
     let articlesTableView = UITableView()
-    var readingList: [Article] = []
-    
-    init(readingList: [Article]) {
-        super.init(nibName: nil, bundle: nil)
-        self.readingList = readingList
-        title = "Your Headlines"
+    var readingList: [Article] = [] {
+        //var updatedList: [Article] = []
+        didSet {
+            for article in readingList {
+                if article.hasBeenRead == nil {
+                    article.hasBeenRead = false
+                }
+            }
+        }
     }
-    
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Your Headlines"
         configureTableView()
+        loadReadingList()
     }
     
     
@@ -38,6 +38,33 @@ class ReadingListVC: UIViewController {
         articlesTableView.delegate = self
         articlesTableView.dataSource = self
         articlesTableView.register(ReadingListCell.self, forCellReuseIdentifier: ReadingListCell.reuseID)
+    }
+    
+    private func loadReadingList() {
+        PersistenceManager.retrieveArticles(from: SwipeDecision.add.rawValue) { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(let articles):
+                if articles.isEmpty {
+                    self.readingList = articles
+                    DispatchQueue.main.async {
+                        self.articlesTableView.reloadData()
+                    }
+                } else {
+                    self.readingList = articles
+                    DispatchQueue.main.async {
+                        self.articlesTableView.reloadData()
+                    }
+                }
+            case .failure(let error):
+                print("There was an error: \(error)")
+            }
+        }
+    }
+    
+    private func saveArticleStatus() {
+        PersistenceManager.save(articles: readingList, saveTo: SwipeDecision.add.rawValue)
+        loadReadingList()
     }
     
 }
@@ -55,5 +82,47 @@ extension ReadingListVC: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        readingList[indexPath.row].hasBeenRead = true
+        saveArticleStatus()
+        guard let url = URL(string: readingList[indexPath.row].url) else {
+            print("URL is invalid")
+            return
+        }
+        let safariVC = SFSafariViewController(url: url)
+        safariVC.preferredControlTintColor = .label
+        present(safariVC, animated: true)
+
+    }
+    
+    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let article = self.readingList[indexPath.row]
+        let articleHasBeenRead = article.hasBeenRead ?? false
+        let title = articleHasBeenRead ? "Mark as unread" : "Mark as read"
+        let markAsUnread = UIContextualAction(style: .normal, title: title) { (action, view, bool) in
+            self.readingList[indexPath.row].hasBeenRead = !self.readingList[indexPath.row].hasBeenRead!
+            self.saveArticleStatus()
+            self.articlesTableView.reloadData()
+        }
+        markAsUnread.backgroundColor = Colors.blue
+        return UISwipeActionsConfiguration(actions: [markAsUnread])
+    }
+    
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        let article = readingList[indexPath.row]
+        
+        PersistenceManager.updateWith(article: article, from: SwipeDecision.add.rawValue, actionType: .remove) { [weak self] error in
+            guard let self = self else { return }
+            if let error = error {
+                print("There was an error: \(error)")
+            } else {
+                DispatchQueue.main.async {
+                    self.loadReadingList()
+                }
+            }
+            
+        }
+    }
     
 }

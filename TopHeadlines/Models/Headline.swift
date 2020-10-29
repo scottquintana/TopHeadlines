@@ -8,7 +8,7 @@
 import Foundation
 
 struct Headline: Codable, Hashable {
-    let articles: [Article]
+    var articles: [Article]
 }
 
 struct Article: Codable, Hashable {
@@ -21,6 +21,10 @@ struct Article: Codable, Hashable {
     let publishedAt: Date
     var content: String?
     var hasBeenRead: Bool? = false
+    
+    mutating func setAsUnread() {
+        hasBeenRead = false
+    }
 }
 
 struct Source: Codable, Hashable {

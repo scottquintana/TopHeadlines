@@ -96,7 +96,7 @@ class THCardCell: UICollectionViewCell {
             imageView.trailingAnchor.constraint(equalTo: cardView.trailingAnchor),
             imageView.heightAnchor.constraint(equalTo: cardView.heightAnchor, multiplier: 0.45),
             
-            sourceLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: padding),
+            sourceLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: sidePadding),
             sourceLabel.leadingAnchor.constraint(equalTo: cardView.leadingAnchor, constant: padding),
             sourceLabel.trailingAnchor.constraint(equalTo: cardView.trailingAnchor, constant: -padding),
             sourceLabel.heightAnchor.constraint(equalToConstant: 28),

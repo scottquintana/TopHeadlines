@@ -38,24 +38,27 @@ class ReadingListCell: UITableViewCell {
                 }
             }
         }
-        self.titleLabel.text = article.title
-        self.dateLabel.text = DateHelper.convertToMonthDayYearFormat(article.publishedAt)
-        self.timeLabel.text = DateHelper.convertToTimeFormat(article.publishedAt)
-        if let hasBeenRead = article.hasBeenRead {
-            self.articleHasBeenRead = hasBeenRead
+        titleLabel.text = article.title
+        dateLabel.text = DateHelper.convertToMonthDayYearFormat(article.publishedAt)
+        timeLabel.text = DateHelper.convertToTimeFormat(article.publishedAt)
+        
+        if let articleHasBeenRead = article.hasBeenRead {
+            accessoryType = articleHasBeenRead ? .checkmark : .disclosureIndicator
+            articleImageView.alpha = articleHasBeenRead ? 0.25 : 1
+            titleLabel.textColor = articleHasBeenRead ? .tertiaryLabel : .label
         }
     }
-    
     
     private func configure() {
         addSubviews(articleImageView, titleLabel, dateLabel, timeLabel)
         
         backgroundColor = .systemBackground
-        accessoryType = articleHasBeenRead ? .checkmark : .disclosureIndicator
+        
+        
         
         articleImageView.layer.cornerRadius = 14
         articleImageView.contentMode = .scaleAspectFill
-        articleImageView.alpha = articleHasBeenRead ? 0.5 : 1
+        
         
         titleLabel.numberOfLines = 3
         titleLabel.adjustsFontSizeToFitWidth = false
@@ -85,7 +88,7 @@ class ReadingListCell: UITableViewCell {
             timeLabel.heightAnchor.constraint(equalToConstant: 14),
             timeLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -(padding + 30)),
             timeLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -padding)
-        
+            
         ])
         
     }

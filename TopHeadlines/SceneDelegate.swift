@@ -31,6 +31,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     func configureNavigationBar() {
         UINavigationBar.appearance().barTintColor = Colors.titleBlue
+        UINavigationBar.appearance().tintColor = .white
 
         let attributes = [
                 NSAttributedString.Key.font: UIFont(name: "DMSerifText-Regular", size: 22)!,
