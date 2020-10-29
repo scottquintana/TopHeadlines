@@ -74,6 +74,8 @@ class SwiperView: UIView {
     }
 }
 
+//MARK: - CollectionView delegates
+
 extension SwiperView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return articles.count
@@ -92,6 +94,7 @@ extension SwiperView: UICollectionViewDataSource {
 
 extension SwiperView: UICollectionViewDelegate { }
 
+//MARK: - ArticleStackLayoutDelegate
 
 extension SwiperView: ArticleStackLayoutDelegate {
     func articleShouldRemove(_ flowLayout: ArticleStackLayout, swipeDecision: SwipeDecision, indexPath: IndexPath) {

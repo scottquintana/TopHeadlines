@@ -22,6 +22,8 @@
 		5ECD1D642547680D00700602 /* THNavButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ECD1D632547680D00700602 /* THNavButton.swift */; };
 		5ECD1D6D2547686B00700602 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ECD1D6C2547686B00700602 /* Constants.swift */; };
 		5EDE8006254A0FF8002F1D2A /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EDE8005254A0FF8002F1D2A /* DateHelper.swift */; };
+		5EDE8011254A7115002F1D2A /* ReadingListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EDE8010254A7115002F1D2A /* ReadingListVC.swift */; };
+		5EDE8016254A71B1002F1D2A /* ReadingListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EDE8015254A71B1002F1D2A /* ReadingListCell.swift */; };
 		5EF3BF73254730F400FC6530 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF3BF72254730F400FC6530 /* AppDelegate.swift */; };
 		5EF3BF75254730F400FC6530 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF3BF74254730F400FC6530 /* SceneDelegate.swift */; };
 		5EF3BF77254730F400FC6530 /* THMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF3BF76254730F400FC6530 /* THMainVC.swift */; };
@@ -64,6 +66,8 @@
 		5ECD1D632547680D00700602 /* THNavButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = THNavButton.swift; sourceTree = "<group>"; };
 		5ECD1D6C2547686B00700602 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		5EDE8005254A0FF8002F1D2A /* DateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
+		5EDE8010254A7115002F1D2A /* ReadingListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadingListVC.swift; sourceTree = "<group>"; };
+		5EDE8015254A71B1002F1D2A /* ReadingListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadingListCell.swift; sourceTree = "<group>"; };
 		5EF3BF6F254730F400FC6530 /* TopHeadlines.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TopHeadlines.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5EF3BF72254730F400FC6530 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5EF3BF74254730F400FC6530 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -142,6 +146,7 @@
 			children = (
 				5E23BC472548843E004D14F8 /* THCardCell.swift */,
 				5E23BC782549347C004D14F8 /* ArticleStackLayout.swift */,
+				5EDE8015254A71B1002F1D2A /* ReadingListCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -233,6 +238,7 @@
 			isa = PBXGroup;
 			children = (
 				5EF3BF76254730F400FC6530 /* THMainVC.swift */,
+				5EDE8010254A7115002F1D2A /* ReadingListVC.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -393,7 +399,9 @@
 				5E23BC6E2548D7F0004D14F8 /* UIView+Ext.swift in Sources */,
 				5E23BC482548843E004D14F8 /* THCardCell.swift in Sources */,
 				5E23BC632548CA50004D14F8 /* THImageView.swift in Sources */,
+				5EDE8011254A7115002F1D2A /* ReadingListVC.swift in Sources */,
 				5E23BC532548B64E004D14F8 /* NetworkManager.swift in Sources */,
+				5EDE8016254A71B1002F1D2A /* ReadingListCell.swift in Sources */,
 				5E23BC5D2548BE83004D14F8 /* PersistenceManager.swift in Sources */,
 				5EF3BF73254730F400FC6530 /* AppDelegate.swift in Sources */,
 				5ECD1D432547583A00700602 /* NavButtonsView.swift in Sources */,

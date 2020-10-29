@@ -54,9 +54,11 @@ class THMainVC: UIViewController {
                     print("There was an error: \(error.rawValue)")
             }
         }
-          
-        
-        
+    }
+    
+    func pushReadingList() {
+        let readingListVC = ReadingListVC(readingList: articles)
+        navigationController?.pushViewController(readingListVC, animated: true)
     }
 }
 
@@ -72,7 +74,7 @@ extension THMainVC: NavButtonsViewDelegate {
         case .add:
             swiperView.buttonPressedToSwipe(buttonPressed: .add)
         case .viewList:
-            print("view button tapped")
+            pushReadingList()
         }
     }
 }

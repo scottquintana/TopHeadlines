@@ -20,6 +20,7 @@ struct Article: Codable, Hashable {
     var urlToImage: String?
     let publishedAt: Date
     var content: String?
+    var hasBeenRead: Bool? = false
 }
 
 struct Source: Codable, Hashable {
