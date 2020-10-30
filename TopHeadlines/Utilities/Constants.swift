@@ -12,6 +12,7 @@ enum SFSymbols {
     static let passOnArticleX = UIImage(systemName: "xmark")
     static let viewArticlesList = UIImage(systemName: "list.star")
     static let undoArticleSwipe = UIImage(systemName: "arrow.uturn.right")
+    static let newspapger = UIImage(systemName: "newspaper")
 }
 
 enum Colors {

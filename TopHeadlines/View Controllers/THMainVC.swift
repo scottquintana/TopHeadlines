@@ -9,6 +9,8 @@ import UIKit
 
 class THMainVC: UIViewController {
     
+    let cache = NSCache<NSString, NSString>()
+    
     let swiperView = SwiperView()
     let navButtonsView = NavButtonsView()
     var headlines: Headline?
@@ -46,14 +48,14 @@ class THMainVC: UIViewController {
         ])
     }
     
+    
     func getHeadlines() {
         NetworkManager.shared.getHeadlines { [weak self] result in
             guard let self = self else { return }
             
             switch result {
             case .success(let downloadedHeadlines):
-                self.filterArticles(incomingArticles: downloadedHeadlines.articles)
-                self.articles = downloadedHeadlines.articles
+                self.articles = self.filterArticles(incomingArticles: downloadedHeadlines.articles)
                 self.swiperView.set(articles: self.articles)
             case .failure(let error):
                 print("There was an error: \(error.rawValue)")
@@ -81,25 +83,29 @@ class THMainVC: UIViewController {
     
     
     private func filterArticles(incomingArticles: [Article]) -> [Article] {
-        let combinedList = passList + readingList
-        var articles = incomingArticles
-        for article in articles {
-            var a = article.hasBeenRead
-            if combinedList.contains(article) {
-                print("it's in there: \(article.title)")
+        var filteredArticles: [Article] = []
+        for article in incomingArticles {
+            let cacheKey = NSString(string: article.title)
+            if let title = cache.object(forKey: cacheKey) {
+                print("This article has been seen: \(title)")
+            } else {
+                filteredArticles.append(article)
             }
         }
-        return incomingArticles
+        return filteredArticles
     }
     
+    
     func addToList(article: Article, listType: SwipeDecision) {
-        var unreadArticle = article
-       // unreadArticle.hasBeenRead = false
-        PersistenceManager.updateWith(article: unreadArticle, from: listType.rawValue, actionType: .add) { error in
+        let cacheKey = NSString(string: article.title)
+        let listTypeSting = NSString(string: listType.rawValue)
+        cache.setObject(listTypeSting, forKey: cacheKey)
+
+        
+        PersistenceManager.updateWith(article: article, from: listType.rawValue, actionType: .add) { error in
             guard let error = error else { return }
             print("There was an error: \(error)")
             return
-            
         }
     }
     
@@ -127,8 +133,11 @@ extension THMainVC: NavButtonsViewDelegate {
 }
 
 extension THMainVC: SwiperViewDelegate {
+    func didSwipeAllCards(with message: String, in view: UIView) {
+        showEmptyStateView(with: message, in: view)
+    }
+    
     func didSwipeOnArticle(article: Article, swipeDecision: SwipeDecision) {
         addToList(article: article, listType: swipeDecision)
-        
     }
 }

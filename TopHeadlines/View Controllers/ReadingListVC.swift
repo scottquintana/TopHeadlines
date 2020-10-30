@@ -11,16 +11,7 @@ import SafariServices
 class ReadingListVC: UIViewController {
 
     let articlesTableView = UITableView()
-    var readingList: [Article] = [] {
-        //var updatedList: [Article] = []
-        didSet {
-            for article in readingList {
-                if article.hasBeenRead == nil {
-                    article.hasBeenRead = false
-                }
-            }
-        }
-    }
+    var readingList: [Article] = []
         
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +28,7 @@ class ReadingListVC: UIViewController {
         articlesTableView.rowHeight = 100
         articlesTableView.delegate = self
         articlesTableView.dataSource = self
+        articlesTableView.removeExcessCells()
         articlesTableView.register(ReadingListCell.self, forCellReuseIdentifier: ReadingListCell.reuseID)
     }
     
@@ -46,9 +38,10 @@ class ReadingListVC: UIViewController {
             switch result {
             case .success(let articles):
                 if articles.isEmpty {
-                    self.readingList = articles
                     DispatchQueue.main.async {
+                        self.readingList = articles
                         self.articlesTableView.reloadData()
+                        self.showEmptyStateView(with: "No articles to read.", in: self.view)
                     }
                 } else {
                     self.readingList = articles
@@ -79,6 +72,7 @@ extension ReadingListVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ReadingListCell.reuseID) as! ReadingListCell
         cell.set(article: readingList[indexPath.row])
+
         return cell
     }
     

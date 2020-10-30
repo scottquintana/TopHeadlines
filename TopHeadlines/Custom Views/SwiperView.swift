@@ -9,13 +9,21 @@ import UIKit
 
 protocol SwiperViewDelegate: class {
     func didSwipeOnArticle(article: Article, swipeDecision: SwipeDecision)
+    
+    func didSwipeAllCards(with message: String, in view: UIView )
 }
 
 class SwiperView: UIView {
     
     var articleCollectionView: UICollectionView!
     let customLayout = ArticleStackLayout()
-    var articles: [Article] = []
+    var articles: [Article] = [] {
+        didSet {
+            if articles.isEmpty {
+                delegate?.didSwipeAllCards(with: "You're all caught up!", in: self)
+            }
+        }
+    }
     
     weak var delegate: SwiperViewDelegate?
     
@@ -43,6 +51,7 @@ class SwiperView: UIView {
     private func configureCollectionView() {
         articleCollectionView = UICollectionView(frame: .zero, collectionViewLayout: customLayout)
         addSubview(articleCollectionView)
+        
         articleCollectionView.delegate = self
         articleCollectionView.dataSource = self
         articleCollectionView.backgroundColor = .systemBackground
@@ -78,7 +87,13 @@ class SwiperView: UIView {
 
 extension SwiperView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return articles.count
+        if articles.count > 0 {
+            return articles.count
+        } else {
+            
+            return articles.count
+        }
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
